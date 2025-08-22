@@ -7,7 +7,7 @@
 	<title>Todo Liste</title>
 </head>
 
-<body onload="render()">
+<body onload="loadTodos()">
 	<h1>Todo-Liste</h1>
 
 	<form onsubmit="addTodo(); return false;">
@@ -15,11 +15,21 @@
 		<button>Hinzufügen</button>
 	</form>
 
-	<ul id="todoList"></ul>
+	<ul id="todoList">
+		<li>Laden...</li>
+	</ul>
 
 	<script>
 
-		let todos = ['Einkaufen'];
+		let todos = [];
+
+		async function loadTodos() {
+			const url = 'http://localhost:3000/todos'
+			let response = await fetch(url);
+
+			todos = await response.json();
+			render();
+		}
 
 		function addTodo() {
 			event.preventDefault();
@@ -37,7 +47,7 @@
 			todoList.innerHTML = "";
 			todos.forEach((todo) => {
 				let li = document.createElement("li");
-				li.textContent = todo;
+				li.textContent = todo.text;
 				todoList.appendChild(li);
 			});
 		}
