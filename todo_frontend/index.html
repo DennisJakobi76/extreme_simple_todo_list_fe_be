@@ -35,10 +35,9 @@
 			event.preventDefault();
 			const todoInput = document.getElementById("todoInput");
 			let todoText = todoInput.value;
-			todos.push(todoText);
+			todos.push({ title: todoText });
 			todoInput.value = "";
-			console.table(todos);
-			save();
+			addToServer(todoText);
 			render();
 		}
 
@@ -47,18 +46,18 @@
 			todoList.innerHTML = "";
 			todos.forEach((todo) => {
 				let li = document.createElement("li");
-				li.textContent = todo.text;
+				li.textContent = todo.title;
 				todoList.appendChild(li);
 			});
 		}
 
-		function save() {
-			fetch('http://127.0.0.1/todos', {
+		function addToServer(todoText) {
+			fetch('http://127.0.0.1:3000/todos', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
 				},
-				body: JSON.stringify(todos)
+				body: JSON.stringify({ title: todoText })
 			});
 		}
 	</script>
