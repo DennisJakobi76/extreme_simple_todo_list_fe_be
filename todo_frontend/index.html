@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Todo Liste</title>
+</head>
+
+<body onload="render()">
+	<h1>Todo-Liste</h1>
+
+	<form onsubmit="addTodo(); return false;">
+		<input type="text" placeholder="Neues Todo" id="todoInput">
+		<button>Hinzufügen</button>
+	</form>
+
+	<ul id="todoList"></ul>
+
+	<script>
+
+		let todos = ['Einkaufen'];
+
+		function addTodo() {
+			event.preventDefault();
+			const todoInput = document.getElementById("todoInput");
+			let todoText = todoInput.value;
+			todos.push(todoText);
+			todoInput.value = "";
+			console.table(todos);
+			save();
+			render();
+		}
+
+		function render() {
+			let todoList = document.getElementById("todoList");
+			todoList.innerHTML = "";
+			todos.forEach((todo) => {
+				let li = document.createElement("li");
+				li.textContent = todo;
+				todoList.appendChild(li);
+			});
+		}
+
+		function save() {
+			fetch('http://127.0.0.1/todos', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(todos)
+			});
+		}
+	</script>
+</body>
+
+</html>
+
+</script>
+</body>
+
+</html>
