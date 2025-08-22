@@ -1,0 +1,7 @@
+{
+    "todos": [
+        { "id": 1, "text": "Obst kaufen" },
+        { "id": 2, "text": "Milch kaufen" },
+        { "id": 3, "text": "Sport machen" }
+    ]
+}
