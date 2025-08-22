@@ -1,7 +1,28 @@
 {
-    "todos": [
-        { "id": 1, "text": "Obst kaufen" },
-        { "id": 2, "text": "Milch kaufen" },
-        { "id": 3, "text": "Sport machen" }
-    ]
+  "todos": [
+    {
+      "id": 1,
+      "title": "Obst kaufen"
+    },
+    {
+      "id": 2,
+      "title": "Milch kaufen"
+    },
+    {
+      "id": 3,
+      "title": "Sport machen"
+    },
+    {
+      "id": "d904",
+      "title": "Nase"
+    },
+    {
+      "id": "4ebf",
+      "title": "Birne"
+    },
+    {
+      "id": "0b7e",
+      "title": "honk"
+    }
+  ]
 }
